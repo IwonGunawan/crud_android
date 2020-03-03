@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CRUD.</string>
+    <string name="emp_id">ID</string>
+    <string name="emp_name">Nama Pegawai</string>
+    <string name="emp_position">Posisi</string>
+    <string name="emp_salary">Gaji</string>
+    <string name="btnSave">Save Data</string>
+    <string name="btnListEmp">Listing Pegawai</string>
+    <string name="btnUpdate">Update</string>
+    <string name="btnDelete">Delete</string>
+</resources>
