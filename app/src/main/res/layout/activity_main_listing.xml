@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -10,22 +10,23 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     tools:context=".MainListing">
+
     <ListView
-        android:layout_width="match_parent"
+        android:id="@+id/listItem"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listItem" />
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
+        android:backgroundTint="@color/primary"
         android:src="@drawable/ic_add_white_24dp"
-        android:layout_margin="15dp"
-        app:fabSize="normal"
         app:borderWidth="0dp"
         app:elevation="6dp"
-        android:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal"
         />
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

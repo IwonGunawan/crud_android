@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -96,7 +95,7 @@ public class MainListing extends AppCompatActivity implements ListView.OnItemCli
                     HashMap<String, String> employees = new HashMap<>();
                     employees.put("id", empId);
                     employees.put("nama", empName);
-                    employees.put("posisi", " > " + empPosition);
+                    employees.put("posisi", empPosition);
                     list.add(employees);
                 }
             }
@@ -108,9 +107,11 @@ public class MainListing extends AppCompatActivity implements ListView.OnItemCli
         }
 
         ListAdapter adapter = new SimpleAdapter(
-                MainListing.this, list, R.layout.list_item,
-                new String[] {"id", "nama", "posisi"},
-                new int[] {R.id.emp_id, R.id.emp_name, R.id.emp_position}
+                MainListing.this,
+                list,
+                R.layout.list_item,
+                new String[] {"nama", "posisi"},
+                new int[] {R.id.emp_name, R.id.emp_position}
         );
         listItem.setAdapter(adapter);
     }
@@ -119,7 +120,7 @@ public class MainListing extends AppCompatActivity implements ListView.OnItemCli
     @Override
     public void onClick(View v) {
         if (v == btnCreate) {
-            Toast.makeText(this, "hello create", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, MainActivity.class));
         }
     }
 }
