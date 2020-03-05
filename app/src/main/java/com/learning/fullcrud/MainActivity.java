@@ -1,6 +1,7 @@
 package com.learning.fullcrud;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText etPosition;
     private EditText etSalary;
     private Button btnSave;
-    private Button btnListEmp;
+    Toolbar toolbar;
 
 
     @Override
@@ -37,11 +38,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etPosition  = (EditText) findViewById(R.id.etPosition);
         etSalary    = (EditText) findViewById(R.id.etSalary);
         btnSave     = (Button) findViewById(R.id.btnSave);
-        btnListEmp  = (Button) findViewById(R.id.btnListEmp);
+        toolbar     = (Toolbar) findViewById(R.id.tlCreate);
+
+        // toolbar
+        toolbar.setTitle("Create New");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // setting listener to button
         btnSave.setOnClickListener(this);
-        btnListEmp.setOnClickListener(this);
     }
 
     @Override
@@ -50,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             saveEmployee();
         }
         else {
-            startActivity(new Intent(this, MainListing.class));
+            Toast.makeText(this, "Error,..!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -77,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     JSONObject content = new JSONObject(s);
                     String msg = content.getString("msg");
                     Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
+
+                    startActivity(new Intent(MainActivity.this, MainListing.class));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -105,4 +118,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SaveEmployee se     = new SaveEmployee();
         se.execute();
     }
+
 }
