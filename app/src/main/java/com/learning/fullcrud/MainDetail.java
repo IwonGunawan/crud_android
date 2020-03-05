@@ -1,6 +1,8 @@
 package com.learning.fullcrud;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.ToolbarWidgetWrapper;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -30,6 +32,7 @@ public class MainDetail extends AppCompatActivity implements View.OnClickListene
     private Button btnDelete;
 
     private String employee_id;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,18 @@ public class MainDetail extends AppCompatActivity implements View.OnClickListene
         etSalary        = (EditText) findViewById(R.id.etSalary);
         btnUpdate       = (Button) findViewById(R.id.btnUpdate);
         btnDelete       = (Button) findViewById(R.id.btnDelete);
+        toolbar         = (Toolbar) findViewById(R.id.tlDetail);
+
+        // toolbar
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Detail");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         btnUpdate.setOnClickListener(this);
         btnDelete.setOnClickListener(this);
@@ -140,6 +155,8 @@ public class MainDetail extends AppCompatActivity implements View.OnClickListene
                 super.onPostExecute(s);
                 loading.dismiss();
                 Toast.makeText(MainDetail.this, "success update data", Toast.LENGTH_LONG).show();
+
+                startActivity(new Intent(MainDetail.this, MainListing.class));
             }
 
             @Override
