@@ -1,7 +1,7 @@
 package com.learning.fullcrud;
 
 public class konfigurasi {
-    private static String URL = "http://192.168.43.78/_learning/android_pegawai";
+    private static String URL = "http://192.168.43.78/crud_android_api";
 
     public static final String URL_ADD      = URL + "/create.php";
     public static final String URL_UPDATE   = URL + "/update.php";
